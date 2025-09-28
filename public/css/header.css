@@ -1,0 +1,37 @@
+.background{
+    margin: 0;
+    height: 60vh;
+    background: url('chad_9809faf37fc54322b85f654b1f336ae9.png') no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 40px 0 0 1300px;
+    font: 900 60px sans-serif;
+    color: aliceblue;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.form input {
+    display: block;
+    width: 95%;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: bisque;
+    padding: 15px;
+    font: 700 20px sans-serif;
+    color: chocolate;
+}
+.form button {
+    width: 5%;
+    background-color: bisque;
+    border-color: burlywood;
+    cursor: pointer;
+}
+button img {
+    height: 30px;
+}
