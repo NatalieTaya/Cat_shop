@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +16,31 @@
 
 </head>
 <body>
-    <div class='background'>
-        Store
-    </div>
+    <header class="header">
+        <div class='background'>
+            <img src="public\css\chad_9809faf37fc54322b85f654b1f336ae9.png" alt="">
+        </div>
 
-    
-    <a href="/login">Войти</a>
-    <a href="/register">Зарегистрироваться</a>
+        <div class="nav-container">
+            <h1 class=' title'>Store</h1>
+            <ul class="navbar-nav"> 
+                <li class="nav-item">    <a href="/">Главная</a>     </li>
+                <?php if (!isset($_SESSION['auth'])) {?>
+                <li class="nav-item">    <a href="/login">Войти</a>  </li>
+                <li class="nav-item">    <a href="/register">Зарегистрироваться</a>  </li>
+                <?php } else {?>
+                <li class="nav-item">    <a href="/cart">Корзина</a>     </li>
+                <li class="nav-item">    
+                    <form action="/logout" method="post" >
+                        <button type="submit" name="logout">
+                            Выйти
+                        </button>
+                    </form>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </header>
+
+
+   

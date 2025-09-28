@@ -1,36 +1,81 @@
+.header {
+    background-color: beige;
+    display: flex;
+    border: 2px black solid;
+    position: relative
+}
 .background{
     margin: 0;
-    height: 60vh;
-    background: url('chad_9809faf37fc54322b85f654b1f336ae9.png') no-repeat;
-    background-size: contain;
-    background-position: center;
-    padding: 40px 0 0 1300px;
-    font: 900 60px sans-serif;
-    color: aliceblue;
+    height: 45vh;
+    /* Маска для прозрачности картинки */
+    -webkit-mask-image: linear-gradient(to right, 
+        black 0%, 
+        black 33%, 
+        transparent 60%);
+    mask-image: linear-gradient(to right, 
+        black 0%, 
+        black 33%, 
+        transparent 60%);
+} 
+.nav-container {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translate(0%, -50%); /* Вычитает 50% от собственных размеров */
+
 }
-.form {
+.title {
+    text-align: center;
+    color: chocolate;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+}
+.nav-item {
+    margin: 1em;
+}
+.nav-item a,
+.nav-item form button{
+    border: none;
+    background: none;
+    text-decoration: none;
+    font: 500 1.5em sans-serif;
+    color: chocolate;
+}
+
+
+
+
+.form-register {
     display: flex;
     flex-direction: column;
     margin: 20px auto;
     width: 80%;
+    justify-content: center;
 }
-
-.form input {
+.form-register div {
+    color: chocolate;
+}
+.form-register div input {
     display: block;
     width: 95%;
     height: 30px;
     border: none;
+    border-radius: 6px;
     outline: none;
-    background-color: bisque;
+    background-color: bisque !important;
     padding: 15px;
     font: 700 20px sans-serif;
     color: chocolate;
 }
-.form button {
-    width: 5%;
+
+.form-register button {
+    width: 30%;
     background-color: bisque;
     border-color: burlywood;
     cursor: pointer;
+    margin: 30px;
 }
 button img {
     height: 30px;

@@ -1,6 +1,11 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require $_SERVER['DOCUMENT_ROOT'] . '/app/core/core.php';
+
+AuthController::redirect();
 
 $showSuccess = false;
 $showErrorAcceess = false;
@@ -25,24 +30,14 @@ if (isset($_POST['authorization'])) {
 
 <?php includeTemplate('header.php'); ?>
 
-<h2>Авторизация</h2>
+<h2 class="title">Авторизация</h2>
 
-    <?php 
-        if ($showSuccess) { includeTemplate('messages/success.php');   }
-    ?>
-    <?php 
-        if ($showErrorAcceess) {
-      //      includeTemplate('messages/successAuthorize', ['message' => 'Доступ запрещен']);
-        }
-    ?>
-    <?php 
-        if ($showError) {
-        //    includeTemplate('messages/successAuthorize', ['message' => 'Неверный пароль или логин']);
-        }
-    ?>
+    <?php if ($showSuccess) { includeTemplate('messages/success.php', ['message' => 'Доступ разрешен']);   }?>
+    <?php if ($showErrorAcceess) { includeTemplate('messages/success.php', ['message' => 'Доступ запрещен']);} ?>
+    <?php if ($showError) { includeTemplate('messages/success.php', ['message' => 'Неверный пароль или логин']); } ?>
     <?php 
         if (!AuthController::isAuthorized()) {
-            includeTemplate('messages/authorize.php');
+            includeTemplate('auth/authorize.php');
         }
     ?>
 

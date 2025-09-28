@@ -25,7 +25,15 @@ class AuthController {
         return (bool) ($_SESSION['auth'] ?? false);
     }
     public static function logout() {
+        session_destroy();
         $_SESSION['auth'] = false;
         $_SESSION['id'] = '';
     }
+    public static function redirect() {
+        if (isset($_SESSION['auth'])) {
+            header('Location: ' . '/');
+            exit();
+        }
+    }
+
 }

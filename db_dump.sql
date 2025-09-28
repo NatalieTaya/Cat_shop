@@ -58,5 +58,5 @@ CREATE TABLE `cart_items` (
 INSERT into `users` 
     ( `email`,`password`,`first_name`,`last_name`,`is_active`,`is_admin`)
     VALUES
-    ('admin@example.com','12','Admin','Admin','1','1')
+    ('admin@example.com','$2y$12$Hy88MvzhbpODfJt4nKBf4OrZeKMIQwrER1UVP8VnCR4rwBGoTg0Ei','Admin','Admin','1','1')
 ;    

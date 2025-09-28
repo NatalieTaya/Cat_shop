@@ -1,5 +1,10 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
 $controllerPath = $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/AuthController.php';
 
 require_once $controllerPath;
@@ -11,7 +16,7 @@ $path = rtrim($path, '/');
 switch ($path) {
     case '':
     case '/':
-        echo "Welcome to homepage";
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/index.php';
         break;
     case '/login':
         $controller = new AuthController();
@@ -20,6 +25,10 @@ switch ($path) {
     case '/register':
         $controller = new AuthController();
         $controller->showRegister();
+        break;
+    case '/logout':
+        AuthController::logout();
+        AuthController::redirect();
         break;
     default:
         http_response_code(404);
