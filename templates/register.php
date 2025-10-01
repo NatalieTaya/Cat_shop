@@ -3,8 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require $_SERVER['DOCUMENT_ROOT'] . '/app/core/core.php';
-
 AuthController::redirect();
 
 $is_created=false;

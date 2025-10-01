@@ -8,6 +8,13 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
 }
+
+.products_show {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 #products_show {
     width: 79%;
     display: flex;
@@ -80,4 +87,38 @@ aside  h2{
     background-color: burlywood;
     border: none;
     cursor: pointer;
+}
+.form-register {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 80%;
+    justify-content: center;
+}
+.form-register div {
+    color: chocolate;
+    font: 700 20px sans-serif;
+}
+.form-register div input {
+    display: block;
+    width: 95%;
+    height: 50px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background-color: bisque !important;
+    padding: 15px;
+    font: 700 20px sans-serif;
+    color: chocolate;
+}
+
+.form-register button {
+    width: 30%;
+    background-color: bisque;
+    border-color: burlywood;
+    cursor: pointer;
+    margin: 30px;
+}
+button img {
+    height: 30px;
 }

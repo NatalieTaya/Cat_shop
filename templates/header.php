@@ -23,13 +23,28 @@
 
         <div class="nav-container">
             <h1 class=' title'>Store</h1>
+
             <ul class="navbar-nav"> 
                 <li class="nav-item">    <a href="/">Главная</a>     </li>
-                <?php if (!isset($_SESSION['auth'])) {?>
+                <?php if (!isset($_SESSION['auth']) ) {?>
                 <li class="nav-item">    <a href="/login">Войти</a>  </li>
                 <li class="nav-item">    <a href="/register">Зарегистрироваться</a>  </li>
-                <?php } else {?>
+                <?php } else if (isset($_SESSION['auth']) && User::isAdmin($_SESSION['id']) ){?>
+                <li class="nav-item">    <a href="/cart">Корзина</a>     </li> 
+            </ul>
+            <ul class="navbar-nav"> 
+                <li class="nav-item">    <a href="/admin">Добавить товар</a>     </li>
+                <li class="nav-item">    
+                    <form action="/logout" method="post" >
+                        <button type="submit" name="logout">
+                            Выйти
+                        </button>
+                    </form>
+                </li>
+                <?php } else if (isset($_SESSION['auth']) && ! (User::isAdmin($_SESSION['id']) )) {?>
                 <li class="nav-item">    <a href="/cart">Корзина</a>     </li>
+            </ul>    
+            <ul class="navbar-nav"> 
                 <li class="nav-item">    
                     <form action="/logout" method="post" >
                         <button type="submit" name="logout">
@@ -39,6 +54,7 @@
                 </li>
                 <?php } ?>
             </ul>
+            
         </div>
     </header>
 

@@ -2,7 +2,6 @@
 
 includeTemplate('header.php');
 
-$products = Product::getProducts();
 
 ?>
 
@@ -11,8 +10,8 @@ $products = Product::getProducts();
         <button  type="submit" name="submitQuery"><img src="/public/css/magnifying-glass-silhouette.png">  </button>
     </form>
 
+<?php
 
-<?php   includeTemplate('products/product.php', ['products' => $products]); ?>
-
-<?php   includeTemplate('footer.php');  ?>
+includeTemplate('footer.php');
+?>
 

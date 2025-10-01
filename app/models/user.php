@@ -5,6 +5,22 @@ class User {
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
     }
+    public static function isAdmin($id) {
+        $instance = new self();
+        $stmt = $instance->db->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['is_admin'];
+    }
+
+    public static function findById($id) {
+        $instance = new self();
+        $stmt = $instance->db->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
     public static function findByEmail($email) {
         $instance = new self();
         $stmt = $instance->db->prepare("SELECT * FROM users WHERE email = :email");
@@ -25,7 +41,6 @@ class User {
         if ($stmt->execute()) {
             return true;
         } else {
-            // Вывести ошибку для отладки
             print_r($stmt->errorInfo());
             return false;
         }
