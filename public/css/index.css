@@ -15,10 +15,10 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-#products_show {
+.products_window {
     width: 79%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row ;
     justify-content: space-evenly;
 
 }
