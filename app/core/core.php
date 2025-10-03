@@ -10,4 +10,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/color.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/category.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/image.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/AuthController.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/CartController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/ProductController.php';

@@ -52,6 +52,9 @@ class Product{
         $stmt->execute();
         $products = $stmt->fetchAll();
 
+        if(!$products) {
+            return false;
+        }
         // getting array of colors
         $productIds = array_column($products, 'product_id');
         $placeholders = str_repeat('?,', count($productIds) - 1) . '?';
@@ -86,6 +89,12 @@ class Product{
     public static function getFilters ($colorIds, $categoriesIds, $maxCost) {
         $product_IDs = $_SESSION['query_products_id'];
 
+        if ($colorIds == '') {
+            return 'Цвета не выбраны';
+        }
+        if ($categoriesIds=='') {
+            return 'Категории товара не выбраны';
+        }
         $placeholders_prod = str_repeat('?,', count($product_IDs) - 1) . '?';
         $placeholders_colors = str_repeat('?,', count($colorIds) - 1) . '?';
         $placeholders_categories = str_repeat('?,', count($categoriesIds) - 1) . '?';

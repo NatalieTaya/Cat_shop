@@ -5,7 +5,8 @@ ini_set('display_errors', 1);
 
 AuthController::redirect();
 
-$is_created=false;
+$showSuccess = false;
+$showError = false;
 
 if(isset($_POST['registration'])) {
     $email=$_POST['email'] ?? '';
@@ -15,8 +16,12 @@ if(isset($_POST['registration'])) {
     $is_active=1;
     $is_admin=0;
     
-    $result = User::createUser($email,$password,$first_name, $last_name, $is_active, $is_admin);
-    $is_created=true;
+    if (!User::validateRegister($_POST)) {
+        $result = User::createUser($email,$password,$first_name, $last_name, $is_active, $is_admin);
+        $showSuccess=true;
+    } else {
+        $showError=true;
+    }
 
 }
 ?>
@@ -25,10 +30,13 @@ if(isset($_POST['registration'])) {
 
 <h2 class="title">Регистрация</h2>
 
-<?php if($is_created) {
+<?php if($showSuccess) {
     includeTemplate('messages/success.php', ['message' => 'Пользователь создан']);
-} else if(!$is_created) {
-    includeTemplate('auth/register.php');
-} ?>
+} else if($showError) {
+    includeTemplate('messages/error.php', ['message' => User::validateRegister($_POST)]);
+} ?> 
+<?php includeTemplate('auth/register.php'); ?>
+
+
 
 <?php includeTemplate('footer.php'); ?>

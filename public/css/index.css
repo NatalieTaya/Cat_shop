@@ -2,46 +2,27 @@
     margin: 0;
     text-decoration: none;
 }
-.main {
-    margin: 30px;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
+body{
+    width: 100%;
 }
-
 .products_show {
+    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 .products_window {
-    width: 79%;
+    width: 100%;
     display: flex;
     flex-direction: row ;
     justify-content: space-evenly;
-
 }
-#qproducts {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-#pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 99%;
-    height: 30px;
-}
-
 .product {
     width: 25%-35px ;
-    margin: 25px;
+    margin: 15px;
     border: bisque 1px solid;
     cursor: pointer;
-
 }
 .product_name  {
     text-align: center;
@@ -64,23 +45,64 @@
     color: peru;
     font: 500 20px sans-serif;
 }
-
-aside {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
+.error_msg {
+    text-align: center;
+    padding: 5px;
     color: peru;
     font: 500 20px sans-serif;
 }
-aside  h2{
-    padding: 10px;
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
 }
-.label_search{
-    display: inline-block;
-    margin: 10px;
-    padding: 5px;
-    height: 20px;
+.submit_query_form {
+    width: 60%;
+    display: block;
+    justify-content: center;
 }
+.submit_query_form input{
+    border: none;
+    background-color: bisque;
+    height: 60px;
+    padding: 10px ;
+    border-radius: 10px 0 0 10px;
+    width: 80%;
+    margin: 0;
+    vertical-align: top;
+}
+.submit_query_form button{
+    border: none;
+    height: 60px;
+    background-color:chocolate;
+    padding: 10px ;
+    border-radius: 0 10px 10px 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+
+
+#qproducts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 99%;
+    height: 30px;
+}
+
+
+
+
+
 .pagination_btn{
     font: 500 20px sans-serif;
     margin: 0 3px;

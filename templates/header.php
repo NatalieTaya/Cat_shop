@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/public/css/index.css">
     <link rel="stylesheet" href="/public/css/header.css">
     <link rel="stylesheet" href="/public/css/footer.css">
+    <link rel="stylesheet" href="/public/css/extended_search.css">
+
+    
     <title>Document</title>
 
 </head>

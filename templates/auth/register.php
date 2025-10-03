@@ -8,6 +8,10 @@
         <input id="password" name="password" type="password"autocomplete="off">
     </div>
     <div class="">
+        <label for="password" class="form-label">Повторите пароль</label>
+        <input id="password" name="repeat_password" type="password"autocomplete="off">
+    </div>
+    <div class="">
         <label for="first_name" class="form-label">Имя</label>
         <input id="first_name" name="first_name" autocomplete="off">
     </div>

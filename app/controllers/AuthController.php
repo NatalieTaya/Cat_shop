@@ -9,7 +9,6 @@ class AuthController {
     }
 
     public static function auth($email,$id) {
-        session_start();
         $_SESSION['auth'] = true;
         $_SESSION['id'] = $id;
         setcookie('email', $email, [

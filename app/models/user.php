@@ -45,4 +45,32 @@ class User {
             return false;
         }
     }
+    public static function validateLogin(array $fields) {
+        if (empty($fields['email'])) {
+            return 'Введите email';
+        }
+        if (empty($fields['password'])) {
+            return 'Введите пароль';
+        }
+        return false;
+    }
+    public static function validateRegister(array $fields) {
+        if (empty($fields['email'])) {
+            return 'Введите email';
+        }
+        if (empty($fields['password'])) {
+            return 'Введите пароль';
+        }
+        if (empty($fields['first_name'])) {
+            return 'Введите имя';
+        }
+        if (empty($fields['last_name'])) {
+            return 'Введите фамилию';
+        }
+        if ($fields['password'] != $fields['repeat_password']) {
+            return 'Пароли не совпадают';
+        }
+        return false;
+    }
+    
 }

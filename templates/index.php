@@ -2,49 +2,53 @@
 
 includeTemplate('header.php');
 
+$filtered = false;
 
 if (isset($_POST['submit_query'])) {
     $querytext=$_POST['name'] ?? '';
     $products = Product::getQueryProducts($querytext);
+    $filtered = false;
 } else {
     $products = Product::getQueryProducts(null);
+    if ($products) {
+        $filtered = false;
+    }
 }
-
 
 if (isset($_POST['extended_search'])) {
     $queryColors=$_POST['colors'] ?? '';
     $queryCategories=$_POST['categories'] ?? '';
     $querySlider=$_POST['price_range'] ?? '';
-    $products = Product::getFilters($queryColors, $queryCategories, $querySlider);
+    $products_filtered = Product::getFilters($queryColors, $queryCategories, $querySlider);
+    $filtered = true;
 }
 ?>
 
-    <form class="form" method="post" >
-        <input type="text" name="name">
-        <button  type="submit" name="submit_query"><img src="/public/css/magnifying-glass-silhouette.png">  </button>
+<div class="form-container">
+    <form class="submit_query_form" method="post" >
+        <input type="text" name="name"><!--
+     --><button  type="submit" name="submit_query"><img src="/public/css/icon.png">  </button>
     </form>
+</div>
+
 
 <div class="products_window">
-    <aside>
-    <h2>Расширенный поиск </h2>
-        <form id="form_extended_search" method="POST">
-            <label class="label_search">Цена</label>
-                <input type="text" name="minPrice">
-                <input type="text" name="maxPrice">
-            <label class="label_search">Цвет</label><br>
-                <?php foreach($products['colors'] as $color) {?>
-                    <input name="colors[]"  value="<?= $color['id'] ?>" type="checkbox" checked>
-                    <label > <?= $color['color'] ?> </label><br>
-                <?php }?>
-            <label for="">Категория товара</label><br>        
-                <?php foreach($products['categories'] as $category) {?>
-                    <input name="categories[]" value="<?= $category['id'] ?>"  type="checkbox" checked>
-                    <label > <?= $category['name'] ?> </label><br>
-                <?php }?>
-            <button type="submit" name="extended_search">Применить</button>
-        </form>
-    </aside>
-    <?php   includeTemplate('products/product.php', ['products' => $products['products']]); ?>
+    <?php if ($products) { 
+        includeTemplate('products/extended_search.php', ['products' => $products]); 
+    } ?> 
+    
+    <?php   
+    if ($products && !$filtered) {
+        includeTemplate('products/product.php', ['products' => $products['products']]); 
+    } else if (!$products){
+        includeTemplate('messages/product_msg.php', ['message' => 'По вашему запросу ничего не нашли']); 
+    } else if(gettype($products_filtered)=='string'){
+        includeTemplate('messages/product_msg.php', ['message' => $products_filtered]); 
+    } else if(gettype($products_filtered)=='array'){
+        includeTemplate('products/product.php', ['products' => $products_filtered['products']]); 
+    } 
+    
+    ?>
 </div>
 
 

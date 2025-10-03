@@ -2,7 +2,7 @@
 
 includeTemplate('header.php');
 ?>
-    Корзина
+<h2 class="title">Корзина</h2>
 
 <?php
 

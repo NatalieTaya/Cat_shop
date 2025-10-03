@@ -39,6 +39,10 @@ switch ($path) {
         $controller = new ProductController();
         $controller->showQueryPage();
         break;
+    case '/cart':
+        $controller = new CartController();
+        $controller->showCartPage();
+        break;
     default:
         http_response_code(404);
         echo "404 - Page not found";
