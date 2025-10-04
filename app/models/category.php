@@ -17,9 +17,8 @@ class Category {
         $category = $stmt->fetch();
 
         if($category) {
-            return (int)[$category['id']];
+            return (int)($category['id']);
         }
-
         $stmt=$instance->db->prepare('INSERT INTO categories (`name`) 
                                         VALUES (:name) ');
         $stmt->bindParam(':name', $categoryName);

@@ -1,4 +1,4 @@
-CREATE TABLE `users` (
+/*CREATE TABLE `users` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `product_category` (
     FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE CASCADE
 );
-
+*/
 CREATE TABLE `carts` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT NOT NULL,
@@ -52,11 +52,13 @@ CREATE TABLE `cart_items` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `quantity` INT NOT NULL,
     `product_id` INT NOT NULL,
-    FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
+    `cart_id` INT NOT NULL,
+    FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON DELETE CASCADE
 );
-
+/*
 INSERT into `users` 
     ( `email`,`password`,`first_name`,`last_name`,`is_active`,`is_admin`)
     VALUES
     ('admin@example.com','$2y$12$Hy88MvzhbpODfJt4nKBf4OrZeKMIQwrER1UVP8VnCR4rwBGoTg0Ei','Admin','Admin','1','1')
-;    
+;    */

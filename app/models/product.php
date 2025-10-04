@@ -15,7 +15,7 @@ class Product{
     public static function createProduct($name, $price, $color_id, $categoryName,$filepath){
         $instance = new self();
         $stmt = $instance->db->prepare('INSERT INTO products (`name`, `price`, `color_id`) 
-                                            VALUES (:name, :price, :color_id) ');
+                                               VALUES (:name, :price, :color_id) ');
         $stmt->bindParam(':name', $name);      
         $stmt->bindParam(':price', $price);                                    
         $stmt->bindParam(':color_id', $color_id);                                    
@@ -26,7 +26,7 @@ class Product{
         $category_id = Category::findOrCreate($categoryName);
 
         $stmt = $instance->db->prepare("INSERT INTO product_category (`product_id`, `category_id`)
-                                                 VALUES (:product_id, :category_id)");
+                                               VALUES (:product_id, :category_id)");
         $stmt->bindParam(':product_id', $product_id);      
         $stmt->bindParam(':category_id', $category_id); 
         $stmt->execute();
@@ -43,7 +43,7 @@ class Product{
         if ($name!=null) {
             $sql .= 'WHERE name REGEXP :name';
         } else {
-            $sql .= 'ORDER BY RAND()';
+            $sql .= '';
         };                                
         $stmt= $instance->db->prepare($sql);   
         if ($name!=null) {

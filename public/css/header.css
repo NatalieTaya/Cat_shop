@@ -2,11 +2,11 @@
     background-color: beige;
     display: flex;
     border: 2px black solid;
-    position: relative
+    position: relative;
 }
 .background{
     margin: 0;
-    height: 45vh;
+    max-height: 40vh;
     /* Маска для прозрачности картинки */
     -webkit-mask-image: linear-gradient(to right, 
         black 0%, 
@@ -17,12 +17,20 @@
         black 33%, 
         transparent 60%);
 } 
+.background img{
+    margin: 0;
+    max-height: 40vh;
+    min-height: 40vh;
+    object-fit: cover;
+    flex-shrink: 0;
+}
 .nav-container {
     position: absolute;
     left: 60%;
     top: 50%;
     transform: translate(0%, -50%); /* Вычитает 50% от собственных размеров */
-
+        flex-shrink: 0;
+    flex-grow: 0;
 }
 .title {
     text-align: center;

@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $is_created=false;
+$is_image_uploaded=true;
 $colors = ProductController::getColors();
 $categories = ProductController::getCategories();
 
@@ -23,17 +24,15 @@ if(isset($_POST['create_product'])) {
     $newFileName = uniqid() . '.' . $fileType;
     $newFilePath = $uploadDir . $newFileName;
     if (move_uploaded_file($file['tmp_name'], $newFilePath)) {
-        echo "Изображение успешно загружено: " . $newFileName;
+        $is_image_uploaded=false;
+            // Преобразуем абсолютный путь в относительный URL
+        $normalizedPath = str_replace('\\', '/', $newFilePath);
+        $webPath = str_replace('D:/MyWeb/Cat_shop/', '/', $normalizedPath);
+        $result = ProductController::create($name, $price, $colorName,$category, $webPath);
+        $is_created=true;
     } else {
-        echo "Ошибка при загрузке файла.";
+        $is_image_uploaded=false;
     }
-
-    // Преобразуем абсолютный путь в относительный URL
-    $normalizedPath = str_replace('\\', '/', $newFilePath);
-    $webPath = str_replace('D:/MyWeb/Cat_shop/', '/', $normalizedPath);
-
-    $result = ProductController::create($name, $price, $colorName,$category, $webPath);
-    $is_created=true;
 
 }
 ?>
@@ -42,10 +41,14 @@ if(isset($_POST['create_product'])) {
 
 <h2 class="title">Создание нового товара</h2>
 
-<?php if($is_created) {
+<?php 
+
+if($is_created) {
     includeTemplate('messages/success.php', ['message' => 'Товар добавлен в магазин']);
 }
-
+if(!$is_image_uploaded) {
+    includeTemplate('messages/error.php', ['message' => 'Ошибка при загрузке изображения']);
+}
     includeTemplate('products/creation_form.php',['colors' => $colors, 'categories' => $categories]);
 ?>
 

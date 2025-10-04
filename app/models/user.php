@@ -38,8 +38,13 @@ class User {
         $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':is_active', $is_active);
         $stmt->bindParam(':is_admin', $is_admin);
+
         if ($stmt->execute()) {
-            return true;
+            $sql = "INSERT INTO carts (`user_id`)
+            VALUES (?)";
+            $stmt = $instance->db->prepare( $sql);
+            $stmt->execute([$_SESSION['id']]);
+            return true; 
         } else {
             print_r($stmt->errorInfo());
             return false;

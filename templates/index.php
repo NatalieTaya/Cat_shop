@@ -1,8 +1,8 @@
 <?php
 
-includeTemplate('header.php');
 
 $filtered = false;
+
 
 if (isset($_POST['submit_query'])) {
     $querytext=$_POST['name'] ?? '';
@@ -14,7 +14,6 @@ if (isset($_POST['submit_query'])) {
         $filtered = false;
     }
 }
-
 if (isset($_POST['extended_search'])) {
     $queryColors=$_POST['colors'] ?? '';
     $queryCategories=$_POST['categories'] ?? '';
@@ -22,6 +21,12 @@ if (isset($_POST['extended_search'])) {
     $products_filtered = Product::getFilters($queryColors, $queryCategories, $querySlider);
     $filtered = true;
 }
+
+$cartController = new CartController();
+$cartController->addorRemove();
+
+includeTemplate('header.php');
+
 ?>
 
 <div class="form-container">
@@ -34,18 +39,18 @@ if (isset($_POST['extended_search'])) {
 
 <div class="products_window">
     <?php if ($products) { 
-        includeTemplate('products/extended_search.php', ['products' => $products]); 
+        includeTemplate('products/extended_search.php', ['products' => $products, 'cartController' => $cartController]); 
     } ?> 
     
     <?php   
     if ($products && !$filtered) {
-        includeTemplate('products/product.php', ['products' => $products['products']]); 
+        includeTemplate('products/product.php', ['products' => $products['products'], 'cartController' => $cartController]); 
     } else if (!$products){
         includeTemplate('messages/product_msg.php', ['message' => 'По вашему запросу ничего не нашли']); 
     } else if(gettype($products_filtered)=='string'){
         includeTemplate('messages/product_msg.php', ['message' => $products_filtered]); 
     } else if(gettype($products_filtered)=='array'){
-        includeTemplate('products/product.php', ['products' => $products_filtered['products']]); 
+        includeTemplate('products/product.php', ['products' => $products_filtered['products'], 'cartController' => $cartController]); 
     } 
     
     ?>
@@ -54,4 +59,3 @@ if (isset($_POST['extended_search'])) {
 
 
 <?php   includeTemplate('footer.php');  ?>
-

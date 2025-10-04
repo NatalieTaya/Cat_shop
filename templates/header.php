@@ -14,11 +14,14 @@
     <link rel="stylesheet" href="/public/css/footer.css">
     <link rel="stylesheet" href="/public/css/extended_search.css">
 
-    
+    <script src="/public/js/scroll.js"> </script>
+
     <title>Document</title>
 
 </head>
+
 <body>
+    
     <header class="header">
         <div class='background'>
             <img src="public\css\chad_9809faf37fc54322b85f654b1f336ae9.png" alt="">
