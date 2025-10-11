@@ -1,0 +1,17 @@
+.products_cart {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product_cart {
+    display: flex;
+    flex-direction: row;
+    width: 50% ;
+    height: fit-content;
+    margin: 5px;
+    border: bisque 1px solid;
+    border-radius: 15px;
+    cursor: pointer;
+}

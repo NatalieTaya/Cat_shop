@@ -34,5 +34,11 @@ class AuthController {
             exit();
         }
     }
+    public static function redirectToLogin() {
+        if (!isset($_SESSION['auth'])) {
+            header('Location: ' . '/login');
+            exit();
+        }
+    }
 
 }

@@ -2,6 +2,8 @@
 
 includeTemplate('header.php');
 
+AuthController::redirectToLogin();
+
 $cartController = new CartController();
 $products = $cartController->getCart();
 $cartController->addorRemove();

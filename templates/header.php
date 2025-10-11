@@ -13,8 +13,12 @@
     <link rel="stylesheet" href="/public/css/header.css">
     <link rel="stylesheet" href="/public/css/footer.css">
     <link rel="stylesheet" href="/public/css/extended_search.css">
+    <link rel="stylesheet" href="/public/css/cart.css">
+
 
     <script src="/public/js/scroll.js"> </script>
+    <script src="/public/js/showProductModalWindow.js"> </script>
+
 
     <title>Document</title>
 

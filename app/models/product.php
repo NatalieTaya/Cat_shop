@@ -1,11 +1,6 @@
 <?php
 
 class Product{
-    private $id;
-    private $name;
-    private $price;
-    private $color_id;
-
     private $db;
 
     public function __construct() {

@@ -10,8 +10,6 @@ class CartController {
     }
 
 
-
-
     public function addorRemove(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['add_cart_button']) || isset($_POST['add_plus'])) {

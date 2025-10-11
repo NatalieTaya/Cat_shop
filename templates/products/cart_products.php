@@ -1,7 +1,8 @@
-<div class="products_show">   
+<div class="products_cart">   
     <?php foreach ($products as $product) { ?>
-        <div class="product">
-            <div class="product_image"> <img src="<?= $product['filepath']?>" alt="" height="300"> </div>
+        <div class="product_cart">
+            <div class="product_image_cart"> <img src="<?= $product['filepath']?>" alt="" height="300"> </div>
+            <div class="product_cart_description">
             <h3 class="product_name"> <?= $product['name']?>  </h3>
             <p class="product_cost"> <?= $product['price']?> ₽ </p>
             <form class="add_cart_form" action="" method="post">
@@ -14,6 +15,7 @@
                     <button class="remove_cart_button" name="remove_cart_button" type="submit">Убрать из корзины</button>
                 <?php } ?>
             </form>
+            </div>
         </div>
     <?php }?>
 </div>    

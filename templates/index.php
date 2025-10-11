@@ -1,8 +1,6 @@
 <?php
 
-
 $filtered = false;
-
 
 if (isset($_POST['submit_query'])) {
     $querytext=$_POST['name'] ?? '';
@@ -35,7 +33,7 @@ includeTemplate('header.php');
      --><button  type="submit" name="submit_query"><img src="/public/css/icon.png">  </button>
     </form>
 </div>
-
+<div class="modal-overlay" id="modal-overlay"></div>
 
 <div class="products_window">
     <?php if ($products) { 
@@ -56,6 +54,6 @@ includeTemplate('header.php');
     ?>
 </div>
 
-
+<?php       includeTemplate('products/modal_window.php');  ?>
 
 <?php   includeTemplate('footer.php');  ?>

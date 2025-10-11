@@ -1,0 +1,20 @@
+<div id="product-modal">   
+    <div id="modal-product-image"> <img src="<?= $product['filepath']?>" alt="" height="300"> </div>
+    <h3 id="modal-product-name"> <?= $product['name']?>  </h3>
+    <p id="modal-product-cost"> <?= $product['price']?> ₽ </p>
+    <form class="add_cart_form" action="" method="post">
+        <input type="hidden" name="product_id" value="<?=$product['product_id']?>">
+        <?php if ( isset($_SESSION['auth']) ) { ?>
+            <?php if ($cartController->findItem($product['product_id']) 
+                    &&  !(int)$cartController->quantity($product['product_id'])==0 ) { ?>
+                <button class="add_plus" name="add_minus" type="submit">-</button>
+                <p class="quantity"> <?= (int)$cartController->quantity($product['product_id'])?> </p>
+                <button class="add_minus" name="add_plus" type="submit">+</button>
+            <?php } else { ?>
+                <button class="add_cart_button" name="add_cart_button" type="submit">Добавить в корзину</button>
+            <?php } ?>
+        <?php } else {?>
+            <button class="add_cart_button" name="add_cart_button" type="submit">Добавить в корзину</button>
+        <?php } ?>
+    </form>
+</div>    

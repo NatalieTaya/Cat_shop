@@ -1,4 +1,4 @@
-<form action="" class="form " method="post">
+<form action="" class="form-register" method="post">
     <div class="">
         <label for="email" class="form-label">Логин</label>
         <input id="email" name="email">
